@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 5000;
 
+let numberArray = [];
 // 
 
 // ⬇ This must be added before GET & POST routes below:
@@ -20,13 +21,22 @@ app.listen(PORT, () => {
 
 
 // ⬇ GET & POST Routes below:
-// app.get('/results', (req, res) => {
-//     console.log('Got to /results');
 
-app.post('', (req, res) => {
+
+ app.get('test', (req, res) => {
+     console.log('Got to /test');
+
+
+    res.send(numberArray)
+ })
+
+
+    app.post('/test', (req, res) => {
 console.log()
 
 
 
-    res.send()
+    res.sendStatus(201)
 })
+
+

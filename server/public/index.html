@@ -15,11 +15,32 @@
         <script src="./vendors/jQuery.js"></script>
         <script src="./scripts/client.js"></script>
     </head>
+    <div class = "wrapper"> <!--wraps the body for responsive page-->
+
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
+        <div class='container header'>
+            <div class="p-5 mb-4 bg-light rounded-3">
+              <div class="container d-flex py-5 justify-content-center">
+                <h1 class="display-5 fw-bold">"SERVER SIDE CALCULATOR"</h1>
+              </div>
+            </div>
+    
+
+        <main>
+            <br>
+         <div id="inputArea">
+            <input class="playerInputs btn btn-outline-primary" id="player1Input" type="number" placeholder="Number1?">
+            <b><button type="button" class="btn btn-dark">+</button></b>
+            <b><button type="button" class="btn btn-dark">-</button></b>
+            <b><button type="button" class="btn btn-dark">*</button></b>
+            <b><button type="button" class="btn btn-dark">/</button></b>
+            <b><input class="playerInputs btn btn-outline-success" id="player2Input" type="number" placeholder="Number 2">
+            <b><button type="button" class="btn btn-primary">=</buttont></b>
+            <b><button id="calculateNumbers"  class="btn btn-warning">C</button></b>
+            <!-- <button id="restartButton" class="btn btn-danger">Restart The Game</button> -->
+            <br>     
+        </main>
         <script src="" async defer></script>
     </body>
+</div>
 </html>
