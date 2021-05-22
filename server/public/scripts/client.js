@@ -8,7 +8,7 @@ function handleReady() {
   $('#multiplyBtn').on('click', multiplyButton)
   $('#divideBtn').on('click', divideButton)
   $('#equalButton').on('click',clickedEqual);
-  $('#clearNumberButton').on('click', clickedClear)
+ // $('#clearNumberButton').on('click', clickedClear)
   //clickedRestart();
 } // End handleReady function.
 
@@ -34,6 +34,7 @@ function clickedEqual() {
   })
     .then(function (response) {
       // .then handles happy things; 2XX responses.
+      getAnswer()
       console.log(response);
     })
     .catch(function (error) {
@@ -73,34 +74,37 @@ calculateEquation.operator = '/';
   //clickedClear()
 }
   // ⬇ Getting those guesses from the server:
+
+  function getAnswer(){
   $.ajax({
     method: "GET",
     url: "/solution",
   })
     .then(function (response) {
       console.log(response);
-      renderDom(response);
+     // renderDom(response);
     })
     .catch(function (error) {
       console.log(error);
-      alert("Something went wrong with GET");
+      alert("Something wrong with GET. Try going outside for a while");
     });
+  }
 // End clickedSubmit function.
 
-function clickedClear() {
-  console.log('clicked clear')
-}
-//   //$('#guessOutput').text("");
+// function clickedClear() {
+//   console.log('clicked clear')
+// }
+//   $('#outputResult').text("");
 //   $.ajax({
 //     method: 'GET',
-//     url: '/solution',
+//     url: '/clear',
 //   }).then(function (response) {
 //     console.log(response);
 //   }).catch(function (error) {
 //     console.log(error);
 //     alert('Something went wrong with GET, try again.')
 //   }) // Ajax GET .then call. 
-// } // End clickedRestart function
+// End clickedClear function
 
 // ⬇ Function to renderDom:
 function renderDom() {
