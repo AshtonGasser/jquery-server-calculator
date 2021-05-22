@@ -41,8 +41,9 @@ function clickedEqual() {
       // .catch handles bad things; 4XX or 5XX errors.
       console.log(error);
       alert("Something went wrong with GET, try again.");
+      
     }); // End Ajax .then and .catch functions.
-
+    renderDom();
   }
 
 
@@ -82,12 +83,15 @@ calculateEquation.operator = '/';
   })
     .then(function (response) {
       console.log(response);
-     // renderDom(response);
+      
     })
     .catch(function (error) {
-      console.log(error);
+      
+        console.log(error);
       alert("Something wrong with GET. Try going outside for a while");
+      
     });
+    
   }
 // End clickedSubmit function.
 
@@ -109,14 +113,25 @@ calculateEquation.operator = '/';
 // ⬇ Function to renderDom:
 function renderDom() {
   // ⬇ Appending to DOM:
-  $("#outputResult").append(`
+  $(".outputResult").append(`
   <div>
+<h3 class = 'outputResult'></h3>
+  </div>
+  
+  
+
+
+
+
+
+
+
+     `);
+
+  }
+/* <div>
              <h4>equation history:</h4>
              <ul id = 'outputHistory'>
-                <li>${leftInput}.val() ${calculateEquation.operator} ${rightInput}.val() = ${result}</li>
+                <li>${leftInput}  ${calculateEquation.operator} ${rightInput}.val() = ${result}</li>
             </ul>
-        </div>
-  
-     `);
-}
-// }
+        </div> */

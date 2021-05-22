@@ -28,6 +28,7 @@ app.get("/solution", (req, res) => {
   res.send(storageArray);
 });
 
+
 // app.get("/clear", (req, res) => {
 //   console.log("got to /clear");
 //   clearCalculation()
@@ -57,8 +58,8 @@ app.post("/solution", (req, res) => {
 
 // ⬇ logic for calculation operators  below:
 const doMath = (calculateEquation) => {
-  let left = calculateEquation.left ;
-  let right = calculateEquation.right;
+  let left = Number(calculateEquation.left) ;
+  let right = Number(calculateEquation.right);
   let operator = calculateEquation.operator;
 
   //   }
