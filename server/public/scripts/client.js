@@ -3,29 +3,34 @@ $(document).ready(handleReady);
 function handleReady() {
   console.log("jQuery is loaded!");
   // ⬇ Click listeners:
-  $('#addBtn').on('click', clickedEqual)
-  $('#subtractBtn').on('click', clickedEqual)
-  $('#multiplyBtn').on('click', clickedEqual)
-  $('#divideBtn').on('click', clickedEqual)
-  $('#equalButton').on('click', clickedClear);
-  $('#clearNumberButton').on('click', clickedEqual)
+  $('#addBtn').on('click', addButton)
+  $('#subtractBtn').on('click', subtractButton)
+  $('#multiplyBtn').on('click', multiplyButton)
+  $('#divideBtn').on('click', divideButton)
+  $('#equalButton').on('click',clickedEqual);
+  $('#clearNumberButton').on('click', clickedClear)
   //clickedRestart();
 } // End handleReady function.
 
 calculateEquation = {
-    
-};
+
+}
+
 function clickedEqual() {
   console.log("test log: in clickedEquals");
   let leftInput = $('#leftInput').val();
   let rightInput = $('#rightInput').val();
+  calculateEquation.left=leftInput
+  calculateEquation.right=rightInput
+  //let addBtn = $('#addBtn').val()
+  //calculateEquation.operator
 
   
   // ⬇ Sending those guesses to the server:
   $.ajax({
     method: "POST", // Posting information.
     url: "/solution", // Called a "route".
-    data: guesses,
+    data: calculateEquation
   })
     .then(function (response) {
       // .then handles happy things; 2XX responses.
@@ -37,11 +42,40 @@ function clickedEqual() {
       alert("Something went wrong with GET, try again.");
     }); // End Ajax .then and .catch functions.
 
+  }
 
+
+function addButton(){
+  //console.log('clicked add');
+  calculateEquation.operator = '+';
+//clickedClear()
+
+
+  // $('#addBtn').on('click',)
+  // let addBtn = $('#addBtn').val()
+}
+
+function subtractButton(){
+//console.log('clickedSubtract')
+calculateEquation.operator = '-';
+//clickedClear()
+
+
+}
+
+function multiplyButton(){
+calculateEquation.operator = '*';
+//clickedClear()
+}
+
+function divideButton(){
+calculateEquation.operator = '/';
+  //clickedClear()
+}
   // ⬇ Getting those guesses from the server:
   $.ajax({
     method: "GET",
-    url: "/test",
+    url: "/solution",
   })
     .then(function (response) {
       console.log(response);
@@ -51,32 +85,34 @@ function clickedEqual() {
       console.log(error);
       alert("Something went wrong with GET");
     });
-} // End clickedSubmit function.
+// End clickedSubmit function.
 
 function clickedClear() {
   console.log('clicked clear')
-  $('#guessOutput').text("");
-  $.ajax({
-    method: 'GET',
-    url: '/restart',
-  }).then(function (response) {
-    console.log(response);
-  }).catch(function (error) {
-    console.log(error);
-    alert('Something went wrong with GET, try again.')
-  }) // Ajax GET .then call. 
-} // End clickedRestart function
+}
+//   //$('#guessOutput').text("");
+//   $.ajax({
+//     method: 'GET',
+//     url: '/solution',
+//   }).then(function (response) {
+//     console.log(response);
+//   }).catch(function (error) {
+//     console.log(error);
+//     alert('Something went wrong with GET, try again.')
+//   }) // Ajax GET .then call. 
+// } // End clickedRestart function
 
 // ⬇ Function to renderDom:
-function renderDom(info) {
+function renderDom() {
   // ⬇ Appending to DOM:
   $("#outputResult").append(`
+  <div>
+             <h4>equation history:</h4>
+             <ul id = 'outputHistory'>
+                <li>${leftInput}.val() ${calculateEquation.operator} ${rightInput}.val() = ${result}</li>
+            </ul>
+        </div>
   
-  
-  
-  
-  
-  
-  
-  `);
+     `);
 }
+// }

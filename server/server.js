@@ -3,9 +3,11 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 5000;
 
-let numberArray = [];
-// 
+let calculateEquation = [];
+//let result = 0 
 
+
+//let leftInput = req.body
 // ⬇ This must be added before GET & POST routes below:
 app.use(bodyParser.urlencoded({extended:true}))
 
@@ -18,32 +20,57 @@ app.listen(PORT, () => {
     console.log ('Server is running on port', PORT)
   })
 
-  function doMath (operator){
-    switch(operator){
-        case 'add':
+  
 
-    }
 
-  }
+
+  
 
 
 // ⬇ GET & POST Routes below:
 
 
- app.get('test', (req, res) => {
+ app.get('/solution', (req, res) => {
      console.log('Got to /test');
+    
 
-
-    res.send()
+    res.send(calculateEquation)
  })
 
 
-    app.post('/test', (req, res) => {
-console.log()
-
-
-
+    app.post('/solution ', (req, res) => {
+    console.log('got to /solutions POST, req.body: ', req.body)
+    calculateEquation.push(req.body)
+    let calculateEquation = req.body
+    let result = doMatch(req.body)
+    console.log(result)
     res.sendStatus(201)
 })
 
 
+const doMatch = (calculateEquation) => {
+let left = calculateEquation.left
+let right= calculateEquation.right
+let operator = calculateEquation.operator
+ 
+    //   }
+    switch(operator){
+        case '+':
+        return left + right
+        break;
+        case '-':
+        return left - right
+        break;
+        case '*':
+        return left * right
+        break;
+        case '/':
+        return left / right
+        break;
+        default:
+            console.log('could not calculate')
+    }
+}
+
+//calculateEquation.push(`${left}, ${operator}, ${right}, ${result}`)
+console.log()
