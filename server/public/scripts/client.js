@@ -3,18 +3,28 @@ $(document).ready(handleReady);
 function handleReady() {
   console.log("jQuery is loaded!");
   // ⬇ Click listeners:
-  $("#submitButton").on("click", clickedSubmit);
-  //$('#restartButton').on('click', clickedRestart)
+  $('#addBtn').on('click', clickedEqual)
+  $('#subtractBtn').on('click', clickedEqual)
+  $('#multiplyBtn').on('click', clickedEqual)
+  $('#divideBtn').on('click', clickedEqual)
+  $('#equalButton').on('click', clickedClear);
+  $('#clearNumberButton').on('click', clickedEqual)
   //clickedRestart();
 } // End handleReady function.
 
-function clickedSubmit() {
-  console.log("test log: in clickedSubmit");
+calculateEquation = {
+    
+};
+function clickedEqual() {
+  console.log("test log: in clickedEquals");
+  let leftInput = $('#leftInput').val();
+  let rightInput = $('#rightInput').val();
 
+  
   // ⬇ Sending those guesses to the server:
   $.ajax({
     method: "POST", // Posting information.
-    url: "/test", // Called a "route".
+    url: "/solution", // Called a "route".
     data: guesses,
   })
     .then(function (response) {
@@ -27,7 +37,7 @@ function clickedSubmit() {
       alert("Something went wrong with GET, try again.");
     }); // End Ajax .then and .catch functions.
 
-    
+
   // ⬇ Getting those guesses from the server:
   $.ajax({
     method: "GET",
@@ -43,11 +53,24 @@ function clickedSubmit() {
     });
 } // End clickedSubmit function.
 
+function clickedClear() {
+  console.log('clicked clear')
+  $('#guessOutput').text("");
+  $.ajax({
+    method: 'GET',
+    url: '/restart',
+  }).then(function (response) {
+    console.log(response);
+  }).catch(function (error) {
+    console.log(error);
+    alert('Something went wrong with GET, try again.')
+  }) // Ajax GET .then call. 
+} // End clickedRestart function
 
 // ⬇ Function to renderDom:
 function renderDom(info) {
   // ⬇ Appending to DOM:
-  $("#guessOutput").append(`
+  $("#outputResult").append(`
   
   
   

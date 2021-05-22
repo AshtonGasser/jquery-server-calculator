@@ -18,6 +18,13 @@ app.listen(PORT, () => {
     console.log ('Server is running on port', PORT)
   })
 
+  function doMath (operator){
+    switch(operator){
+        case 'add':
+
+    }
+
+  }
 
 
 // ⬇ GET & POST Routes below:
@@ -27,7 +34,7 @@ app.listen(PORT, () => {
      console.log('Got to /test');
 
 
-    res.send(numberArray)
+    res.send()
  })
 
 

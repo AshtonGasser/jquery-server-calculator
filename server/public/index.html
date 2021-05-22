@@ -29,18 +29,35 @@
         <main>
             <br>
          <div id="inputArea">
-            <input class="playerInputs btn btn-outline-primary" id="player1Input" type="number" placeholder="Number1?">
-            <b><button type="button" class="btn btn-dark">+</button></b>
-            <b><button type="button" class="btn btn-dark">-</button></b>
-            <b><button type="button" class="btn btn-dark">*</button></b>
-            <b><button type="button" class="btn btn-dark">/</button></b>
-            <b><input class="playerInputs btn btn-outline-success" id="player2Input" type="number" placeholder="Number 2">
-            <b><button type="button" class="btn btn-primary">=</buttont></b>
-            <b><button id="calculateNumbers"  class="btn btn-warning">C</button></b>
+            <input id = 'leftInput' class="playerInputs btn btn-outline-primary" id="player1Input" type="number" placeholder="">
+            <b><button  id ='addBtn' type="button" class="btn btn-dark">+</button></b>
+            <b><button id = 'subtractBtn' type="button" class="btn btn-dark">-</button></b>
+            <b><button id = 'multiplyBtn' type="button" class="btn btn-dark">*</button></b>
+            <b><button id = 'divideBtn' type="button" class="btn btn-dark">/</button></b>
+            <b><input id = 'rightInput' class="playerInputs btn btn-outline-success" id="player2Input" type="number" placeholder="">
+            <b><button id = 'equalButton' type="button" class="btn btn-primary">=</buttont></b>
+            <b><button id="clearNumbersButton"  class="btn btn-warning">C</button></b>
             <!-- <button id="restartButton" class="btn btn-danger">Restart The Game</button> -->
             <br>     
         </main>
-        <script src="" async defer></script>
+        <!-- area for results plus history -->
+        <section>
+            <h3 id ='outputResult'>equation result</h3>
+            <label id = 'outputResult'>${result}</label>    
+
+        </section>
+        <br></br>
+
+        <div>
+             <h4>equation history:</h4>
+             <ul id = 'outputHistory'>
+                <li>${leftInput}.val() ${.operatorSelected} ${rightInput}.val() = ${result}</li>
+            </ul>
+        </div>
+
+
+
+        
     </body>
 </div>
 </html>
