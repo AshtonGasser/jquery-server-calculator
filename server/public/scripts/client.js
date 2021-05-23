@@ -8,7 +8,7 @@ function handleReady() {
   $("#multiplyBtn").on("click", multiplyButton);
   $("#divideBtn").on("click", divideButton);
   $("#equalButton").on("click", clickedEqual);
-  // $('#clearNumberButton').on('click', clickedClear)
+  $('#clearNumberButton').on('click', clearNumber)
   
   
   getAnswer()
@@ -45,13 +45,16 @@ function clickedEqual() {
     }); // End Ajax .then and .catch functions.
 }
 
+function clearNumber(){
+console.log('clear!')
+$(".outputResult").empty()
+}
 function addButton() {
   //console.log('clicked add');
   calculateEquation.operator = "+";
   //clickedClear()
 
-  // $('#addBtn').on('click',)
-  // let addBtn = $('#addBtn').val()
+ 
 }
 
 function subtractButton() {
