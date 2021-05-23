@@ -5,9 +5,9 @@ const PORT = 5000;
 
 let storageArray = [];
 //let result = 0
-const calculateEquationObject = {
+// const calculateEquationObject = {
 
-}
+// }
 //let leftInput = req.body
 // ⬇ This must be added before GET & POST routes below:
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,23 +28,20 @@ app.get("/solution", (req, res) => {
   res.send(storageArray);
 });
 
-
 // app.get("/clear", (req, res) => {
 //   console.log("got to /clear");
 //   clearCalculation()
 
 // });
 
-
 app.post("/solution", (req, res) => {
   console.log("got to /solutions POST, req.body: ", req.body);
   storageArray.push(req.body);
-  let result = doMath(req.body) 
-  storageArray.push(calculateEquationObject.result)
-  storageArray.push(result)
+  let result = doMath(req.body);
+  //storageArray.push(calculateEquationObject.result)
+  storageArray.push(result);
   //calculateEquation = req.body;
-  
-   
+
   console.log(result);
   res.sendStatus(201);
 });
@@ -52,13 +49,11 @@ app.post("/solution", (req, res) => {
 // const clearCalculation = () => {
 // result = 0
 
-
 // }
-
 
 // ⬇ logic for calculation operators  below:
 const doMath = (calculateEquation) => {
-  let left = Number(calculateEquation.left) ;
+  let left = Number(calculateEquation.left);
   let right = Number(calculateEquation.right);
   let operator = calculateEquation.operator;
 
