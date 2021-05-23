@@ -23,7 +23,7 @@ app.listen(PORT, () => {
 // ⬇ GET & POST Routes below:
 
 app.get("/solution", (req, res) => {
-  console.log("Got to /test");
+  console.log("YAY Got to /solution");
 
   res.send(storageArray);
 });
@@ -39,9 +39,6 @@ app.post("/solution", (req, res) => {
  
   
   let result = doMath(req.body);
-  //storageArray.push(calculateEquationObject.result)
-  
-  //storageArray.push(result);
   req.body.result=result
   storageArray.push(req.body);
   //calculateEquation = req.body;
@@ -81,4 +78,4 @@ const doMath = (calculateEquation) => {
 };
 
 //calculateEquation.push(`${left}, ${operator}, ${right}, ${result}`)
-console.log();
+

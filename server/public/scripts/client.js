@@ -8,8 +8,11 @@ function handleReady() {
   $("#multiplyBtn").on("click", multiplyButton);
   $("#divideBtn").on("click", divideButton);
   $("#equalButton").on("click", clickedEqual);
-  getAnswer()
   // $('#clearNumberButton').on('click', clickedClear)
+  
+  
+  getAnswer()
+  
   //clickedRestart();
 } // End handleReady function.
 
@@ -84,20 +87,13 @@ function getAnswer() {
           </div>
           `);
         for(let i=0;i<response.length;i++){
-            //console.log(response[i])
-                ;
-            }
-          
-      $("#equationHistory").append(`
+           $("#outputHistory").append(`
           <div>
-             <h4>equation history:</h4>
-             <ul id = 'outputHistory'>
-                <li>${leftInput} ${response[response.operator]} ${rightInput} = ${result}</li>
-            </ul>
+             <ul>${response[i].left} ${response[i].operator} ${response[i].right} = ${response[i].result}</ul>
         </div>
             `);
+        }
     }})
-  
     .catch(function (error) {
       console.log(error);
       alert("Something wrong with GET. Try going outside for a while");
@@ -105,4 +101,4 @@ function getAnswer() {
 }
 
 
-
+//(let i=0;i<response.length;i++)
