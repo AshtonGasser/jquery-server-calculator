@@ -36,10 +36,14 @@ app.get("/solution", (req, res) => {
 
 app.post("/solution", (req, res) => {
   console.log("got to /solutions POST, req.body: ", req.body);
-  storageArray.push(req.body);
+ 
+  
   let result = doMath(req.body);
   //storageArray.push(calculateEquationObject.result)
-  storageArray.push(result);
+  
+  //storageArray.push(result);
+  req.body.result=result
+  storageArray.push(req.body);
   //calculateEquation = req.body;
 
   console.log(result);

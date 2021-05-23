@@ -8,6 +8,7 @@ function handleReady() {
   $("#multiplyBtn").on("click", multiplyButton);
   $("#divideBtn").on("click", divideButton);
   $("#equalButton").on("click", clickedEqual);
+  getAnswer()
   // $('#clearNumberButton').on('click', clickedClear)
   //clickedRestart();
 } // End handleReady function.
@@ -66,7 +67,7 @@ function divideButton() {
   //clickedClear()
 }
 // ⬇ Getting those guesses from the server:
-
+// ⬇ Render to Dom
 function getAnswer() {
   $.ajax({
     method: "GET",
@@ -75,14 +76,18 @@ function getAnswer() {
     .then(function (response) {
       console.log(response);
       $(".outputResult").empty();
-      // for(let result of response){
-      //for(let result of response){
+      if(response.length>0){
       let result = response[response.length - 1];
-      $(".outputResult").append(`
+       $(".outputResult").append(`
           <div>
-        <h3>${result}</h3>
+        <h3>${result.result}</h3>
           </div>
           `);
+        for(let i=0;i<response.length;i++){
+            //console.log(response[i])
+                ;
+            }
+          
       $("#equationHistory").append(`
           <div>
              <h4>equation history:</h4>
@@ -91,45 +96,13 @@ function getAnswer() {
             </ul>
         </div>
             `);
-    })
+    }})
+  
     .catch(function (error) {
       console.log(error);
       alert("Something wrong with GET. Try going outside for a while");
     });
 }
-// End clickedSubmit function.
 
-// function clickedClear() {
-//   console.log('clicked clear')
-// }
-//   $('#outputResult').text("");
-//   $.ajax({
-//     method: 'GET',
-//     url: '/clear',
-//   }).then(function (response) {
-//     console.log(response);
-//   }).catch(function (error) {
-//     console.log(error);
-//     alert('Something went wrong with GET, try again.')
-//   }) // Ajax GET .then call.
-// End clickedClear function
 
-// ⬇ Function to renderDom:
-// function renderDom() {
-//   // ⬇ Appending to DOM:
-//   for(let result of response){
 
-//   $(".outputResult").append(`
-//   <div>
-// <h3>${result[1].result}</h3>
-//   </div>
-
-//      `);
-//   }
-//   }
-/* <div>
-             <h4>equation history:</h4>
-             <ul id = 'outputHistory'>
-                <li>${leftInput}  ${calculateEquation.operator} ${rightInput}.val() = ${result}</li>
-            </ul>
-        </div> */
